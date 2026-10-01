@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.betacom.process.AbstractProcess;
 import com.betacom.process.BaseProcess;
+import com.betacom.process.DateProcess;
+import com.betacom.process.EnumProcess;
 import com.betacom.process.EreditProcess;
 import com.betacom.process.ExceptionProcess;
 import com.betacom.process.InterfaceProcess;
@@ -15,7 +17,7 @@ public class MainProject {
 		System.out.println("Start MainProject");
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Funzione da eseguire [base, abstract :");
-		String selected = "exception";
+		String selected = "date";
 		try {
 		
 			if (selected.trim().equalsIgnoreCase("base")) new BaseProcess().execute();
@@ -24,6 +26,8 @@ public class MainProject {
 			if (selected.trim().equalsIgnoreCase("eredit")) new EreditProcess().execute();
 			if (selected.trim().equalsIgnoreCase("string")) new StringProcess().execute();
 			if (selected.trim().equalsIgnoreCase("exception")) new ExceptionProcess().execute();
+			if (selected.trim().equalsIgnoreCase("enum")) new EnumProcess().execute();
+			if (selected.trim().equalsIgnoreCase("date")) new DateProcess().execute();
 
 		} catch (Exception e) {
 			System.err.println("Error found in process :" + e.getMessage());
