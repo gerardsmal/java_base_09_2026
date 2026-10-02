@@ -47,6 +47,7 @@ public class ListProcess implements GeneralInterface{
 		lI.add(new Impiegato("Piero", "Leponte", true, 1300, "PRODUZIONE"));
 		lI.add(new Impiegato("Cecillia", "Marcello", false, 1400, "IT"));
 		lI.add(new Impiegato("Enrico", "Grazzo", true, 1700, "LOGISTICA"));
+		lI.add(null);
 		
 		return lI;
 	}
@@ -55,7 +56,8 @@ public class ListProcess implements GeneralInterface{
 		System.out.println("******************** " + titolo + "*************");
 		int pos = 0;
 		for (Impiegato it:lI) {
-			System.out.println(pos + " - " + it);
+			if (lI != null)
+				System.out.println(pos + " - " + it);
 			pos++;
 		}		
 	}
@@ -87,8 +89,10 @@ public class ListProcess implements GeneralInterface{
 
 	private void increaseSalary(List<Impiegato> lI, String reparto, double f) {
 		for (Impiegato it:lI) {
-			if (it.getReparto() == Reparto.valueOf(reparto))
-				it.setSalary(it.getSalary() * f);
+			if (it != null ) {
+				if (it.getReparto() == Reparto.valueOf(reparto))
+					it.setSalary(it.getSalary() * f);				
+			}
 		}
 	}
 
