@@ -2,15 +2,12 @@ package com.betacom;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.betacom.exception.AcademyException;
 import com.betacom.interfaces.GeneralInterface;
 import com.betacom.process.AbstractProcess;
 import com.betacom.process.BaseProcess;
+import com.betacom.process.BuilderProcess;
 import com.betacom.process.DateProcess;
 import com.betacom.process.EnumProcess;
 import com.betacom.process.EreditProcess;
@@ -19,21 +16,23 @@ import com.betacom.process.GenericsProcess;
 import com.betacom.process.InnerProcess;
 import com.betacom.process.InterfaceProcess;
 import com.betacom.process.ListProcess;
+import com.betacom.process.LombokProcess;
 import com.betacom.process.MapProcess;
 import com.betacom.process.SequentialProcess;
 import com.betacom.process.SingleTonProcess;
 import com.betacom.process.StringProcess;
-import com.betacom.singleton.SingleTonSample;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 public class MainProject {
-	private static final Logger log = LoggerFactory.getLogger(MainProject.class);
 	
 	public static void main(String[] args) {
 		
 		log.info("Start MainProject");
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Funzione da eseguire [base, abstract :");
-		String selected = "inner";
+		String selected = "lombok";
 		
 		Map<String, GeneralInterface> pr = new HashMap<String, GeneralInterface>();
 		pr.put("base",      new BaseProcess());
@@ -50,6 +49,8 @@ public class MainProject {
 		pr.put("sequential",new SequentialProcess());
 		pr.put("generics",new GenericsProcess());
 		pr.put("inner",new InnerProcess());
+		pr.put("builder",new BuilderProcess());
+		pr.put("lombok",new LombokProcess());
 				
 		if (pr.containsKey(selected)) {
 			GeneralInterface ex = pr.get(selected);
