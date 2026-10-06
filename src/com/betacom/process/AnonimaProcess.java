@@ -67,13 +67,14 @@ public class AnonimaProcess implements GeneralInterface{
 				return Double.compare(o1.getSalary(), o2.getSalary());
 			}
 		});
+		
 		lI.forEach(im -> log.debug(im.toString()));
 
 		/*
 		 * sort con lambda
 		 */
 		lI.sort(( o1, o2) -> Double.compare(o2.getSalary(), o1.getSalary()));
-		log.debug("Sot con lambda ********");
+		log.debug("Sort con lambda ********");
 		lI.forEach(im -> log.debug(im.toString()));
 		
 	}
