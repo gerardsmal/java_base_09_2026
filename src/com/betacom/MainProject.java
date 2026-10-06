@@ -2,10 +2,12 @@ package com.betacom;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import com.betacom.exception.AcademyException;
 import com.betacom.interfaces.GeneralInterface;
 import com.betacom.process.AbstractProcess;
+import com.betacom.process.AnonimaProcess;
 import com.betacom.process.BaseProcess;
 import com.betacom.process.BuilderProcess;
 import com.betacom.process.DateProcess;
@@ -20,6 +22,7 @@ import com.betacom.process.LombokProcess;
 import com.betacom.process.MapProcess;
 import com.betacom.process.SequentialProcess;
 import com.betacom.process.SingleTonProcess;
+import com.betacom.process.StreamProcess;
 import com.betacom.process.StringProcess;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +35,7 @@ public class MainProject {
 		log.info("Start MainProject");
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Funzione da eseguire [base, abstract :");
-		String selected = "lombok";
+		String selected = "anonima";
 		
 		Map<String, GeneralInterface> pr = new HashMap<String, GeneralInterface>();
 		pr.put("base",      new BaseProcess());
@@ -47,10 +50,13 @@ public class MainProject {
 		pr.put("map",       new MapProcess());
 		pr.put("singleton", new SingleTonProcess());
 		pr.put("sequential",new SequentialProcess());
-		pr.put("generics",new GenericsProcess());
-		pr.put("inner",new InnerProcess());
-		pr.put("builder",new BuilderProcess());
-		pr.put("lombok",new LombokProcess());
+		pr.put("generics",  new GenericsProcess());
+		pr.put("inner",     new InnerProcess());
+		pr.put("builder",   new BuilderProcess());
+		pr.put("lombok",    new LombokProcess());
+		pr.put("stream",    new StreamProcess());
+		pr.put("anonima",    new AnonimaProcess());
+		
 				
 		if (pr.containsKey(selected)) {
 			GeneralInterface ex = pr.get(selected);
