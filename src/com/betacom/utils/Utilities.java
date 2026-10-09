@@ -49,5 +49,9 @@ public class Utilities {
 		return r;
 	}
 	
+	public static String buildClassName(String par) {
+		return par.substring(0, 1).toUpperCase() + par.substring(1).toLowerCase() + "Process"; 
+		
+	}
 	
 }

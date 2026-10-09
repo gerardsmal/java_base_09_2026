@@ -1,5 +1,6 @@
 package com.betacom.process;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -32,7 +33,7 @@ public class StreamProcess implements GeneralInterface{
 				new Impiegato("Eric", "Piccolo", true, 1800, "LOGISTICA"),
 				new Impiegato("Paolo", "Bluetto", true, 1900, "IT"),
 				new Impiegato("Ugo", "noede", true, 1200, "IT")				
-				).collect(Collectors.toList());
+				).collect(Collectors.toCollection(ArrayList::new));
 		
 		lI.add(new Impiegato("Luca", "cicol", true, 2600, "IT"));
 		 
