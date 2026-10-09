@@ -16,7 +16,7 @@ public class MainProjectDynamic {
 	public static void main(String[] args) {
 //		Scanner sc = new Scanner(System.in);
 //		System.out.print("Funzione da eseguire [base, abstract :");
-		String selected = "json";
+		String selected = "serializzable";
 		log.info("MainProject is ready to execute {}", selected);
 		try {
 			GeneralInterface ex  = (GeneralInterface) loadProcess(selected);			
