@@ -312,7 +312,8 @@ insert into prova_data (nome, data_nascita)
 
 select * from prova_data pd ;
 
-update prova_data set data_nascita = '2002-03-05' where nome = 'Luca';
+update prova_data set data_nascita = '2003-03-05' where nome = 'Luca';
+
 
 select pd.nome ,  DATE_FORMAT(pd.data_nascita, "%a %d/%m/%y") as nascita,
 	DATE_FORMAT(pd.data_modifica , "%a %d/%m/%y %T") as aggiornato		
@@ -343,3 +344,31 @@ SELECT
     @@global.time_zone AS global_timezone,
     @@session.time_zone AS session_timezone,
     @@system_time_zone AS system_timezone;
+
+/*
+ * tabella tempory
+ */
+create TEMPORARY table dipendenti_temporary (
+	id_dipendente int not null auto_increment,
+	nome varchar(200) not null,
+	cognome varchar(200) not null,
+	data_assunzione date not null,
+	telefono varchar(10) unique,
+	mansione varchar(50) default 'impiegato',
+	stipendio decimal not null check (stipendio >= 1000 and stipendio <= 9000),	
+	primary key (id_dipendente)
+)
+
+insert into dipendenti_temporary (nome, cognome, data_assunzione, stipendio)
+	VALUES 
+		("Lidia", "tensonre", '2026-10-01', 1800);
+
+select * from dipendenti_temporary;
+
+
+select d.id_dipendente , d.nome , d.cognome , u.nome_ufficio, rc.descrizione , c.denominazione   from dipendenti d 
+	left join uffici u on d.id_ufficio = u.id_ufficio 	
+	left join rapporto_cliente rc on rc.id_dipendente = d.id_dipendente 
+	left join clienti c on rc.id_cliente  = c.id_cliente 
+	
+	
